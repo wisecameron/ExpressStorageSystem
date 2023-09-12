@@ -7,19 +7,23 @@ Cameron Warnick
 github.com/wisecameron 
 cameronwarnickbusiness@hotmail.com
 
-Motivation /n
+Motivation
+
 Segregating contract logic and data is one of the primary ways that smart contract developers introduce modularity and scalability to their contract systems.  However, this design pattern brings added complexity and often demands specially-tailored systems, which creates greater potential for bugs and oversights.  In fact, many custom-built storage solutions are fundamentally similar to others, but must be built from scratch due to the absence of versatile open-source solutions.  Given that these tailored systems are often built with a secondary emphasis, it is not surprising that many useful features and optimizations are often neglected.  The Express Storage System aims to bridge this gap by providing an optimized implementation designed to foster long-term scalability, low-level accessibility, and enhanced efficiency.
 
 **Basic Overview:**
 
 Contract Structure
+
 Express is composed of a manager contract and a dynamic set of storage contracts.  New storage contract instances can be deployed at any time and are seamlessly included within a shared domain centered around a single manager contract.
 
 Data Structure
+
 Express stores uint[8-256] values in a dynamic bitmap structure.  The deployer passes an array of sizes, which represent the bit length of each tracked value (ie: [8,16,32,8,256,16,32]).   These values are then sorted using simple insertion sort and packed 
 into individual uint256 values.  It should be noted that this renders the order of members arbitrary by nature: developers are responsible for defining what each slot represents.  For instance, the above bit structure would be converted to [8, 8, 16, 16, 32, 32, 256] in the live contract, which might disturb the “order” initially understood by the deployer.  Bit packing is automatically handled by the native struct type, though it is not sorted.  
 
 Buildable Structs
+
 In Solidity, struct members are traditionally immutable after deployment: you cannot add or remove data fields.  Express does not support removing data fields, as this would invariably lead to data corruption unless expertly used.  However, new fields can be freely added to the storage contract instance post-deployment.  This makes it much easier to support future updates: developers can just extend their existing systems to track new fields.
 
 MultiMod

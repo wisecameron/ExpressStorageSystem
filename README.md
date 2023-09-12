@@ -7,6 +7,7 @@ Motivation
 
 Segregating contract logic and data is one of the primary ways that smart contract developers introduce modularity and scalability to their contract systems.  However, this design pattern brings added complexity and often demands specially-tailored systems, which creates greater potential for bugs and oversights.  In fact, many custom-built storage solutions are fundamentally similar to others, but must be built from scratch due to the absence of versatile open-source solutions.  Given that these tailored systems are often built with a secondary emphasis, it is not surprising that many useful features and optimizations are often neglected.  The Express Storage System aims to bridge this gap by providing an optimized implementation designed to foster long-term scalability, low-level accessibility, and enhanced efficiency.
 
+![Default System Architecture](https://github.com/wisecameron/ExpressStorageSystem/blob/main/Images/Base%20System%20Architecture.png)
 
 **Basic Overview:**
 
@@ -41,6 +42,10 @@ Ownership
 One important element to consider is that Express does not manage data ownership beyond allowing administrators to link storage IDs with user addresses.  These links are not used in any way within the storage system or manager logic.  However, the Storage Manager is generally accessed through the logic layer.  This allows developers to employ ownership (which they will most often want to do) functionality without any existing restrictions from the Express system.  
 
 **Security and Scalability:**
+
+![Security Architecture 1](https://github.com/wisecameron/ExpressStorageSystem/blob/main/Images/Security%20Architecture%20Case%201.png)
+
+![Security Architecutre 2](https://github.com/wisecameron/ExpressStorageSystem/blob/main/Images/Security%20Architecture%20Case%202.png)
 
 Providing Secure Low-Level Access
 Express provides administrators with full data mutability and visibility, while also empowering them with unique features such as the ability to add new dataset members post-deployment.  With this power comes great potential for both innovation and disaster.  The best design pattern for securely managing this system is to create dedicated logic layers to manage data and permissions within the StorageManager contract.  This allows developers to institute additional verifications specifically tailored for their unique use case.  As with central logic contracts, these security layers should not store mapped data, which would be difficult to port in the event that they need to be updated.  Generally speaking, it is best to keep mapped data in the Express system if you intend to update your logic contracts in the future.  

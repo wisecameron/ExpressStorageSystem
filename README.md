@@ -7,9 +7,11 @@ Cameron Warnick
 github.com/wisecameron 
 cameronwarnickbusiness@hotmail.com
 
+
 Motivation
 
 Segregating contract logic and data is one of the primary ways that smart contract developers introduce modularity and scalability to their contract systems.  However, this design pattern brings added complexity and often demands specially-tailored systems, which creates greater potential for bugs and oversights.  In fact, many custom-built storage solutions are fundamentally similar to others, but must be built from scratch due to the absence of versatile open-source solutions.  Given that these tailored systems are often built with a secondary emphasis, it is not surprising that many useful features and optimizations are often neglected.  The Express Storage System aims to bridge this gap by providing an optimized implementation designed to foster long-term scalability, low-level accessibility, and enhanced efficiency.
+
 
 **Basic Overview:**
 
@@ -27,16 +29,20 @@ Buildable Structs
 In Solidity, struct members are traditionally immutable after deployment: you cannot add or remove data fields.  Express does not support removing data fields, as this would invariably lead to data corruption unless expertly used.  However, new fields can be freely added to the storage contract instance post-deployment.  This makes it much easier to support future updates: developers can just extend their existing systems to track new fields.
 
 MultiMod
+
 Multimod is a distinguishing performance-related feature, allowing multiple fields to be updated with a single store instruction.  In Solidity, storing values in storage is one of the most expensive operations. 
 Express uses bit packing, allowing the system to support grouped modification for data members living on the same bit page.  Multimod is more efficient than modify() if at least two values changed are on the same bitmap page, and is still generally cheaper than several modify() calls because it reduces security and initialization-related overhead to only one iteration.  
 
 Extendability
+
 One of the biggest advantages offered by the Express Storage System is the ability to manage all uint-based storage requirements following the mapping-of-struct pattern under one shared domain.  This is accomplished by the ability to deploy and link new StorageSystem instances to the StorageManager after deployment, which can then be seamlessly accessed in the same manner as original members.  For instance, one StorageSystem could describe data about people.  Later, the development team could create a product revolving around automobiles, deploying a new StorageSystem that describes cars.  This new StorageSystem could even track the ID of each car owner (originating from the “person” StorageSystem), creating a link between both instances.  As an aside, the development team could also simply append car-related fields to the “person” StorageSystem instance using the Buildable Structs feature. 
 
 Private Fields
+
 Any abstracted-struct member within a StorageSystem can be marked private.  This bars the value from being viewed through get_value(), but it is still accessible through get_array().  However, get_array() requires administrator-level privileges.
 
 Ownership
+
 One important element to consider is that Express does not manage data ownership beyond allowing administrators to link storage IDs with user addresses.  These links are not used in any way within the storage system or manager logic.  However, the Storage Manager is generally accessed through the logic layer.  This allows developers to employ ownership (which they will most often want to do) functionality without any existing restrictions from the Express system.  
 
 **Security and Scalability:**

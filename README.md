@@ -1,4 +1,4 @@
-# ExpressStorageSystem
+# Express Storage System
 Universal data/logic partition solution for advanced solidity smart contract systems
 
 Formatted whitepaper: https://docs.google.com/document/d/1FkkZB0z90nDtVZO6p1d8rQIgPsAbWvWk5vsuQb0Fuoc/edit?usp=sharing

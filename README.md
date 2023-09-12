@@ -7,7 +7,7 @@ Cameron Warnick
 github.com/wisecameron 
 cameronwarnickbusiness@hotmail.com
 
-Motivation
+Motivation /n
 Segregating contract logic and data is one of the primary ways that smart contract developers introduce modularity and scalability to their contract systems.  However, this design pattern brings added complexity and often demands specially-tailored systems, which creates greater potential for bugs and oversights.  In fact, many custom-built storage solutions are fundamentally similar to others, but must be built from scratch due to the absence of versatile open-source solutions.  Given that these tailored systems are often built with a secondary emphasis, it is not surprising that many useful features and optimizations are often neglected.  The Express Storage System aims to bridge this gap by providing an optimized implementation designed to foster long-term scalability, low-level accessibility, and enhanced efficiency.
 
 **Basic Overview:**

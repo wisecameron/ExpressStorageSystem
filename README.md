@@ -1,12 +1,7 @@
 # ExpressStorageSystem
 Universal data/logic partition solution for advanced solidity smart contract systems
 
-Express Storage System: Universal Data/Logic Partition System for Solidity
-
-Cameron Warnick
-github.com/wisecameron 
-cameronwarnickbusiness@hotmail.com
-
+Formatted whitepaper: https://docs.google.com/document/d/1FkkZB0z90nDtVZO6p1d8rQIgPsAbWvWk5vsuQb0Fuoc/edit?usp=sharing
 
 Motivation
 
@@ -46,8 +41,6 @@ Ownership
 One important element to consider is that Express does not manage data ownership beyond allowing administrators to link storage IDs with user addresses.  These links are not used in any way within the storage system or manager logic.  However, the Storage Manager is generally accessed through the logic layer.  This allows developers to employ ownership (which they will most often want to do) functionality without any existing restrictions from the Express system.  
 
 **Security and Scalability:**
-
-https://imgur.com/a/rtjZEc0
 
 Providing Secure Low-Level Access
 Express provides administrators with full data mutability and visibility, while also empowering them with unique features such as the ability to add new dataset members post-deployment.  With this power comes great potential for both innovation and disaster.  The best design pattern for securely managing this system is to create dedicated logic layers to manage data and permissions within the StorageManager contract.  This allows developers to institute additional verifications specifically tailored for their unique use case.  As with central logic contracts, these security layers should not store mapped data, which would be difficult to port in the event that they need to be updated.  Generally speaking, it is best to keep mapped data in the Express system if you intend to update your logic contracts in the future.  
@@ -93,8 +86,10 @@ Suppose you have developed a smart contract system that empowers external projec
     }
 
 **Key Takeaways**
-* Express is designed to minimize arbitrary limitations.  The system is very open-ended and puts full control into the hands of the developer.  However, this low-level access also creates room for error.  Be especially careful when modifying the bit structure of a deployed storage system, as this action is irreversible.  
+* Express is designed to minimize arbitrary limitations on developer freedom.  The system is very open-ended and does not impose many restrictions to ensure that it is used properly.  Obviously, this low-level access also creates room for error.  Be especially careful when modifying the bit structure of a deployed storage system, as this action is irreversible.  
 
 * The greatest limitation of this system is that it only supports uint storage.  However, one can also store addresses by simply converting as such: uint256(uint160(address)).
 
 * When adding new entries to the system, be sure to first include a push() call.  This ensures that all entries are indexed.
+
+* This contract system has not been audited, I would get it audited before trying to use this in production.  If you do get it audited or audit it yourself, please let me know.  

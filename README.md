@@ -47,7 +47,8 @@ One important element to consider is that Express does not manage data ownership
 
 ![Security Architecutre 2](https://github.com/wisecameron/ExpressStorageSystem/blob/main/Images/Security%20Architecture%20Case%202.png)
 
-Providing Secure Low-Level Access
+Secure Low-Level Access
+
 Express provides administrators with full data mutability and visibility, while also empowering them with unique features such as the ability to add new dataset members post-deployment.  With this power comes great potential for both innovation and disaster.  The best design pattern for securely managing this system is to create dedicated logic layers to manage data and permissions within the StorageManager contract.  This allows developers to institute additional verifications specifically tailored for their unique use case.  As with central logic contracts, these security layers should not store mapped data, which would be difficult to port in the event that they need to be updated.  Generally speaking, it is best to keep mapped data in the Express system if you intend to update your logic contracts in the future.  
 
 Example Use Case

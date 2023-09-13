@@ -1,0 +1,24 @@
+{
+  "name": "express-storage-system",
+  "version": "1.0.0",
+  "description": "Solidity storage segregation solution for mapping-of-struct pattern",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx hardhat test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wisecameron/ExpressStorageSystem.git#main"
+  },
+  "keywords": [
+    "solidity",
+    "storage",
+    "storagesegregation"
+  ],
+  "author": "Cameron Warnick (cameronwarnickbusiness@hotmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wisecameron/ExpressStorageSystem/issues"
+  },
+  "homepage": "https://github.com/wisecameron/ExpressStorageSystem/tree/main#readme"
+}

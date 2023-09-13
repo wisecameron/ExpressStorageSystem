@@ -3,6 +3,11 @@ Universal data/logic partition solution for advanced solidity smart contract sys
 
 Formatted whitepaper: https://docs.google.com/document/d/1FkkZB0z90nDtVZO6p1d8rQIgPsAbWvWk5vsuQb0Fuoc/edit?usp=sharing
 
+**Installation**  
+1) npm install express-storage-system  
+2) import 'express-storage-system/contracts/StorageHandler.sol'
+3) import 'express-storage-system/contracts/StorageSystem.sol'
+
 Motivation
 
 Segregating contract logic and data is one of the primary ways that smart contract developers introduce modularity and scalability to their contract systems.  However, this design pattern brings added complexity and often demands specially-tailored systems, which creates greater potential for bugs and oversights.  In fact, many custom-built storage solutions are fundamentally similar to others, but must be built from scratch due to the absence of versatile open-source solutions.  Given that these tailored systems are often built with a secondary emphasis, it is not surprising that many useful features and optimizations are often neglected.  The Express Storage System aims to bridge this gap by providing an optimized implementation designed to foster long-term scalability, low-level accessibility, and enhanced efficiency.
@@ -60,17 +65,17 @@ Suppose you have developed a smart contract system that empowers external projec
     function initialize()
     external
     {
-        //create a dynamic array to store bit structure [necessary to pass into initialize fxn]
+        //create dynamic arrays to use multimod, initialize
         uint256[] memory bitStorage = new uint256[](15);
         uint256[] memory indexStorage = new uint256[](5);
         uint256[] memory valueStorage = new uint256[](5);
 
-        //You can also pass this as a function or constructor argument
+
 	uint256[15] memory bits = [uint256(8),8,8,16,64,128,256,256,256,256,256,256,256,256,256];
         uint256[5] memory indices = [uint256(9), 7, 8, 11, 2];
         uint256[5] memory values = [uint256(75000 * 1e18), 267 * 1e18, 7000 * 1e18, 80, 0];
 
-        //populate array
+        //populate arrays
 		for(uint i = 0; i < bits.length; i++)
 		{
 			bitStorage[i] = bits[i];

@@ -66,7 +66,7 @@ Suppose you have developed a smart contract system that empowers external projec
         uint256[] memory valueStorage = new uint256[](5);
 
         //You can also pass this as a function or constructor argument
-		uint256[15] memory bits = [uint256(8),8,8,16,64,128,256,256,256,256,256,256,256,256,256];
+	uint256[15] memory bits = [uint256(8),8,8,16,64,128,256,256,256,256,256,256,256,256,256];
         uint256[5] memory indices = [uint256(9), 7, 8, 11, 2];
         uint256[5] memory values = [uint256(75000 * 1e18), 267 * 1e18, 7000 * 1e18, 80, 0];
 

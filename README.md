@@ -62,33 +62,42 @@ Suppose you have developed a smart contract system that empowers external projec
     {
         //create a dynamic array to store bit structure [necessary to pass into initialize fxn]
         uint256[] memory bitStorage = new uint256[](15);
-
+        uint256[] memory indexStorage = new uint256[](5);
+        uint256[] memory valueStorage = new uint256[](5);
 
         //You can also pass this as a function or constructor argument
-        uint256[15] memory bits = [uint256(8),8,8,16,64,128,256,256,256,256,256,256,256,256,256];
-
+		uint256[15] memory bits = [uint256(8),8,8,16,64,128,256,256,256,256,256,256,256,256,256];
+        uint256[5] memory indices = [uint256(9), 7, 8, 11, 2];
+        uint256[5] memory values = [uint256(75000 * 1e18), 267 * 1e18, 7000 * 1e18, 80, 0];
 
         //populate array
-        for(uint i = 0; i < bits.length; i++)
-        {
-            bitStorage[i] = bits[i];
-        }
+		for(uint i = 0; i < bits.length; i++)
+		{
+			bitStorage[i] = bits[i];
+		}
+
+        for(uint i = 0; i < indices.length; i++)
+		{
+			indexStorage[i] = indices[i];
+		}
+
+        for(uint i = 0; i < indices.length; i++)
+		{
+			valueStorage[i] = values[i];
+		}
 
 
         //Get storage handler instance (already deployed)
-        StorageHandler manager = StorageHandler(StorageHandlerAddress);
-
+		StorageHandler manager = StorageHandler(StorageHandlerAddress);
 
         //initialize storage handler
-        manager.initialize(StorageSystemAddress, address(this), vertigoManagerBits, msg.sender);
-
+		manager.initialize(StorageSystemAddress, address(this), bitStorage, msg.sender);
 
         //push new value
-        manager.push(0);
-
+		manager.push(0);
 
         //populate
-        manager.multimod(0, [9, 7, 8, 11, 2], 0, [75000 * 1e18, 267 * 1e18, 7000 * 1e18, 80, 0])                
+        manager.multimod(0, indexStorage, 0, valueStorage);			
     }
 
 **Key Takeaways**

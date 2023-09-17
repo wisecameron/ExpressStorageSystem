@@ -112,4 +112,4 @@ Suppose you have developed a smart contract system that empowers external projec
 
 * When adding new entries to the system, be sure to first include a push() call.  This ensures that all entries are indexed.
 
-* This contract system has not been audited, I would get it audited before trying to use this in production.  I would be the most concerned with functions like modify() and particularly multimod(), which is significantly more hacky and complex in its implementation.  I have tested both pretty extensively and all seems to work well, but I haven't used fuzzing or any more advanced techniques, so it would definitely be very risky to hedge the security of a production project on this stoage system in its current state.  There is also a lot more room for optimizing multimod(), which I intend to do in the future, especially if my effort here is appreciated by at least a handful of people.  If you do get it audited or audit it yourself, please let me know.  
+* This contract system has not been audited, I would get it audited before trying to use this in production.

@@ -1,3 +1,5 @@
+-DEPRECATED: I will be releasing a much more optimized storage system in the near future (~3x cheaper on average).  This is a decent project but there was so much room for improvement.   I would not recommend using this system for anything more than a learning opportunity.
+
 # Express Storage System [Solidity]
 Universal data/logic partition solution for advanced solidity smart contract systems
 
